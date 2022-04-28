@@ -1,0 +1,71 @@
+{
+  "name": "auto-punch",
+  "version": "1.0.0",
+  "description": "my astonishing project",
+  "keywords": [],
+  "repository": {
+    "url": "qige2016/auto-punch",
+    "type": "git"
+  },
+  "license": "MIT",
+  "author": "qige2016 <286882998@qq.com>",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "bin": {
+    "autoPunch": "bin/cli.js"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "clean": "rimraf dist",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "dev": "yarn build --watch",
+    "lint": "eslint .",
+    "prepublishOnly": "yarn build",
+    "release": "node scripts/release.js",
+    "test": "jest --runInBand"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "yarn lint --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cac": "^6.7.12",
+    "chalk": "^4.1.0",
+    "dot-prop": "^7.2.0",
+    "enquirer": "^2.3.6",
+    "env-paths": "^3.0.0",
+    "node-schedule": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.4.1",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.29",
+    "@types/node-schedule": "^1.3.2",
+    "@types/prettier": "^2.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "conventional-changelog-cli": "^2.2.2",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^28.0.2",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3",
+    "yorkie": "^2.0.0"
+  }
+}
